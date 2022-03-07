@@ -15,7 +15,7 @@ getProjects("Details", () => {
     }
     loadDoughnutChart("doughnut-status", phaseKeys, 'Project By Status', phaseData.values, typeData.colours)
   })
-  
+  console.log("HEY")
   //Cost by Phase and Project Type
   getProjects("Phase", () => {
     const investmentFields = projectPhases.filter(obj => {
