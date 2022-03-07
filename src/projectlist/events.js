@@ -44,7 +44,8 @@ getProjects("Details", () => {
         }
       }
     }
-    
+    console.log(labels)
+    console.log(phaseCostData)
     var chart = new Chart(document.getElementById("bar-cost-status"), {
     	type: 'bar',
       data: {
