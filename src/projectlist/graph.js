@@ -30,7 +30,7 @@ function getChartData(field, fieldType, data) {
         ]
       },
       options: {
-          maintainAspectRatio: false,
+        responsive: true,
         title: {
           display: true,
           text: title
