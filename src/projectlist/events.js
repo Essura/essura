@@ -1,14 +1,16 @@
 getCompanyIdFromUrl()
 getProjects("Details", () => {
-	loadProjectList()
-  const phaseData = getChartData("Phase", "S", projectDetails)
-
-  
-	// Type
-	const typeData = getChartData("Type", "S", projectDetails)
-  loadDoughnutChart("doughnut-type", typeData.keys, 'Project By Type', typeData.values, typeData.colours)
   
   getSettings(() => {
+    loadProjectList()
+
+    const phaseData = getChartData("Phase", "S", projectDetails)
+
+  
+    // Type
+    const typeData = getChartData("Type", "S", projectDetails)
+    loadDoughnutChart("doughnut-type", typeData.keys, 'Project By Type', typeData.values, typeData.colours)
+    
     // Status
   	let phaseKeys = []
     for (const key of phaseData.keys) {
@@ -43,30 +45,8 @@ getProjects("Details", () => {
           }
         }
       }
-      console.log(labels)
-      console.log(phaseCostData)
-      var chart = new Chart(document.getElementById("bar-cost-status"), {
-        type: 'bar',
-        data: {
-          labels: labels,
-          datasets: Object.values(phaseCostData)
-        },
-        options: {
-          title: {
-            display: true,
-            text: "Project Spend By Phase"
-          },
-          responsive: true,
-          scales: {
-            xAxes: [{
-                stacked: true
-            }],
-            yAxes: [{
-                stacked: true
-            }]
-          }
-        }
-      })
+
+      loadStackedBarChart("bar-cost-status", labels, "Project Spend By Phase", Object.values(phaseCostData))
     })
   })
 

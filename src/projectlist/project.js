@@ -84,7 +84,7 @@ function loadProjectList() {
     const rag = card.querySelector("[data-id='rag']");
     projectName.textContent = item.Name.S;
     division.textContent = item.Division.S;
-    phase.textContent = item.Phase.S
+    phase.textContent = projectSettings[item.Phase.S]
     status.textContent = "2"
     rag.textContent = "Green"
 
