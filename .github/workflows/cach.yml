@@ -15,4 +15,4 @@ jobs:
           fetch-depth: 0
       - name: Cache Clear
         run: |
-          git diff --name-only ${{ github.event.before }}..${{ github.event.after }} src/ | { read file; curl "https://purge.jsdelivr.net/gh/Essura/essura@main/$file"; }
+          git diff --name-only ${{ github.event.before }}..${{ github.event.after }} src/ | xargs -I{} curl "https://purge.jsdelivr.net/gh/Essura/essura@main/{}"
