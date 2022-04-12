@@ -6,7 +6,7 @@ async function getProject(projectId) {
     }
     let projectEndpoint = new URL(projectAPI + companyId + "/" + projectId)
 	projectEndpoint.search = new URLSearchParams(params).toString();
-	return fetch(projectEndpoint, {
+	return await fetch(projectEndpoint, {
       method: "GET",
       headers: {
         'Content-Type': 'application/json',
