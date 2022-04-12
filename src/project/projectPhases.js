@@ -1,7 +1,3 @@
-const urlParams = new URLSearchParams(window.location.search);
-const projectId = urlParams.get('id');
-const companyId = localStorage.getItem('CompanyId');
-
 let phases = []
 getProjectPhases(companyId, projectId).then(data => {phases=data})
 if(!projectId) window.location.replace("https://essura.webflow.io/projectlists");
