@@ -76,6 +76,7 @@ Webflow.push(function() {
       "Name": $('#ProjectName').val(),
       "Type": $('#ProjectType').val(),
       "Division": $('#ProjectDivision').val(),
+      "Owner": $('#ProjectOwner').val(),
       "Phase": "1",
     }
     
