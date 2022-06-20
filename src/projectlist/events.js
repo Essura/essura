@@ -32,6 +32,8 @@ getProjects("Details", () => {
         const projectPhase = field["Project"]["S"].split("#")[2]
         const projectType = getProjectDetail(projectId)["Type"]["S"]
         const phaseCost = parseInt(field["Complete"]["S"])
+        console.log(projectType)
+        console.log(phaseCostData)
         if (projectType in phaseCostData) {
           let data = phaseCostData[projectType]['data']
           data[parseInt(projectPhase) - 1] += phaseCost
