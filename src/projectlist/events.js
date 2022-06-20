@@ -26,6 +26,7 @@ getProjects("Details", () => {
       const labels = [projectSettings[1], projectSettings[2], projectSettings[3], projectSettings[4], projectSettings[5]]
       let phaseCostData = {}
       console.log("HEY")
+      console.log(investmentFields)
       for(const field of investmentFields){
         const projectId = field["Project"]["S"].split("#")[1]
         const projectPhase = field["Project"]["S"].split("#")[2]
