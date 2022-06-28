@@ -23,17 +23,16 @@ getProjects("Details", () => {
       const investmentFields = projectPhases.filter(obj => {
         return obj.Project.S.endsWith('Investment')
       })
+      // Y Axis
       const labels = [projectSettings[1], projectSettings[2], projectSettings[3], projectSettings[4], projectSettings[5]]
+      
+      // Goes through all investment fields in all tabs
       let phaseCostData = {}
-      console.log("HEY")
-      console.log(investmentFields)
       for(const field of investmentFields){
         const projectId = field["Project"]["S"].split("#")[1]
         const projectPhase = field["Project"]["S"].split("#")[2]
         const projectType = getProjectDetail(projectId)["Type"]["S"]
         const phaseCost = parseInt(field["Complete"]["S"])
-        console.log(projectType)
-        console.log(phaseCostData)
         if (projectType in phaseCostData) {
           let data = phaseCostData[projectType]['data']
           data[parseInt(projectPhase) - 1] += phaseCost

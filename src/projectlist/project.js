@@ -80,13 +80,15 @@ function loadProjectList() {
     const projectName = card.querySelector("[data-id='projectName']");
     const division = card.querySelector("[data-id='division']");
     const phase = card.querySelector("[data-id='phase']");
+    const type = card.querySelector("[data-id='type']");
     const status = card.querySelector("[data-id='status']");
     const rag = card.querySelector("[data-id='rag']");
     projectName.textContent = item.Name.S;
     division.textContent = item.Division.S;
     phase.textContent = projectSettings[item.Phase.S]
+    type.textContent = item.Type.S;
     status.textContent = "2"
-    rag.textContent = "Green"
+    rag.textContent = item.Type.rag
 
     projectsContainer.appendChild(card);
   }
