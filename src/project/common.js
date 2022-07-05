@@ -1,8 +1,9 @@
 const urlParams = new URLSearchParams(window.location.search);
 const projectId = urlParams.get('id');
 const companyId = localStorage.getItem('CompanyId');
-const projectDetail = await getProject(projectId)
-const projectSetting = await getProjectSettings()
+let projectDetail, projectSetting;
+getProject(projectId).then(data => {projectDetail=data})
+getProjectSettings().then(data => {projectSetting=data})
 const currentPhase = parseInt(projectDetail["Phase"]["S"])
 let phases = []
 

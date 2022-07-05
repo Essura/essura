@@ -1,4 +1,4 @@
-async function setProjectInformation() {
+function setProjectInformation() {
     const phaseNames = projectSetting["Items"].find(obj => {return obj.Setting.S === 'Project#Phase'})["PhaseNames"]["M"]
     console.log(projectDetail)
     const phaseNameMap = {
