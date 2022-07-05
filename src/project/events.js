@@ -1,6 +1,5 @@
 setupButtons();
 getSettings()
-setProjectInformation();
 $('.datepicker').datepicker();
 
 var Webflow = Webflow || [];
@@ -8,6 +7,7 @@ Webflow.push(function() {
   
   // unbind webflow form handling
   $(document).off('submit');
+  setProjectInformation();
   
   $('.model').click(function() {
     $('.model').hide()
