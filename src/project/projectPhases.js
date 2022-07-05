@@ -1,17 +1,3 @@
-let phases = []
-getProjectPhases(companyId, projectId).then(data => {phases=data})
-if(!projectId) window.location.replace("https://essura.webflow.io/projectlists");
-
-function getFieldValue(phase, field) {
-	return phases.find(obj => {
-  	return obj.Project.S === `Phase#${projectId}#${phase}#${field}`
-	})
-}
-
-function getFieldIndex(phase, field) {
-	return phases.findIndex(obj => obj.Project.S === `Phase#${projectId}#${phase}#${field}`)
-}
-
 function setButtonActions(field) {
 	$('.field.' + field).find(".status").each(function(i, element) {
   	const phase = $(element).parents().eq(6).data("phase");
@@ -22,7 +8,7 @@ function setButtonActions(field) {
       $("#Model").show()
       if(field === "investment") {
       	$(".investmentform").show()
-      	const phaseValues = getFieldValue(phase, "Investment")
+      	const phaseValues = getPhaseFieldValue(phase, "Investment")
         if(phaseValues) {
         	$("#PrevCurrentGate").text(phaseValues.CurrentGate.S);
           $("#PrevGate").text(phaseValues.Gate.S);
@@ -38,7 +24,7 @@ function setButtonActions(field) {
         }
       } else if(field === "time"){
       	$(".timeform").show();
-        const phaseValues = getFieldValue(phase, "Time")
+        const phaseValues = getPhaseFieldValue(phase, "Time")
         $('.startdate').val("")
         $('.enddate').val("")
         if(phaseValues){
@@ -61,7 +47,7 @@ function setButtonActions(field) {
       	$(".scopeform").show();
         $('.scopeFieldRow').remove();
         $(".scopefieldempty").show();
-        const phaseValue = getFieldValue(phase, "Scope")
+        const phaseValue = getPhaseFieldValue(phase, "Scope")
         if(phaseValue){
           if("Scopes" in phaseValue){
             const fields = phaseValue["Scopes"]["L"]
@@ -81,7 +67,7 @@ function setButtonActions(field) {
       	$(".documentform").show()
         $('.documentFieldRow').remove();
         $(".documentfieldempty").show()
-        const phaseValue = getFieldValue(phase, "Document")
+        const phaseValue = getPhaseFieldValue(phase, "Document")
         if(phaseValue){
           if("Documents" in phaseValue){
           	const fields = phaseValue["Documents"]["L"]
@@ -97,7 +83,7 @@ function setButtonActions(field) {
       	$(".benefitsform").show()
         $('.benefitsFieldRow').remove();
         $(".benefitfieldempty").show()
-        const phaseValue = getFieldValue(phase, "Benefits")
+        const phaseValue = getPhaseFieldValue(phase, "Benefits")
         if(phaseValue){
           if("Benefits" in phaseValue){
             const fields = phaseValue["Benefits"]["L"]

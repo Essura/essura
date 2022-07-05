@@ -1,6 +1,4 @@
 async function setProjectInformation() {
-    const projectDetail = await getProject(projectId)
-    const projectSetting = await getProjectSettings()
     const phaseNames = projectSetting["Items"].find(obj => {return obj.Setting.S === 'Project#Phase'})["PhaseNames"]["M"]
     console.log(projectDetail)
     const phaseNameMap = {
@@ -10,8 +8,19 @@ async function setProjectInformation() {
         4: phaseNames["Four"]["S"],
         5: phaseNames["Five"]["S"],
     }
-    sessionStorage.setItem("Phase", phaseNameMap[projectDetail["Owner"]["S"]])
-    $(".CurrentPhase").text(parseInt(phaseNameMap[projectDetail["Phase"]["S"]]))
-    $(".Owner").text(parseInt(phaseNameMap[projectDetail["Owner"]["S"]]))
-    $(".LastUpdate").text(parseInt(phaseNameMap[projectDetail["LastUpdate"]["S"]]))
+
+    const currentPhase = parseInt(projectDetail["Phase"]["S"])
+    const prevPhase = currentPhase - 1
+    let currentFundingApproved = "0"
+    let targetCompletionDate = "N/A"
+    if (prevPhase > 0) {
+        currentFundingApproved = getPhaseFieldValue(currentPhase, "Investment").Complete.S
+        targetCompletionDate = getPhaseFieldValue(currentPhase, "Time").EndDate.S
+    }
+    $(".CurrentPhase").text(phaseNameMap[currentPhase])
+    $(".Owner").text(projectDetail["Owner"]["S"])
+    $(".LastUpdate").text(formatDate(projectDetail["LastUpdate"]["N"]))
+    $(".CurrentEstimatedTotal").text(currentFundingApproved)
+    $(".CurrentFundingApproved").text(currentFundingApproved)
+    $(".TargetCompletionDate").text(targetCompletionDate)
 }
