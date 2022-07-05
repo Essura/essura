@@ -1,5 +1,6 @@
 setupButtons();
 getSettings();
+setProjectInformation();
 $('.datepicker').datepicker();
 
 var Webflow = Webflow || [];

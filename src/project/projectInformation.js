@@ -2,7 +2,7 @@ async function setProjectInformation() {
     const projectDetail = await getProject(projectId)
     const projectSetting = await getProjectSettings()
     const phaseNames = projectSetting["Items"].find(obj => {return obj.Setting.S === 'Project#Phase'})["PhaseNames"]["M"]
-
+    console.log(projectDetail)
     const phaseNameMap = {
         1: phaseNames["One"]["S"],
         2: phaseNames["Two"]["S"],
