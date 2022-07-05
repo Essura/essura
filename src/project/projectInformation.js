@@ -10,7 +10,7 @@ async function setProjectInformation() {
         4: phaseNames["Four"]["S"],
         5: phaseNames["Five"]["S"],
     }
-
+    sessionStorage.setItem("Phase", phaseNameMap[projectDetail["Owner"]["S"]])
     $(".CurrentPhase").text(parseInt(phaseNameMap[projectDetail["Phase"]["S"]]))
     $(".Owner").text(parseInt(phaseNameMap[projectDetail["Owner"]["S"]]))
     $(".LastUpdate").text(parseInt(phaseNameMap[projectDetail["LastUpdate"]["S"]]))

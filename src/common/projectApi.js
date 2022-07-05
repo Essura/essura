@@ -2,9 +2,9 @@ const projectAPI = "https://waxbn648pk.execute-api.ap-southeast-2.amazonaws.com/
 
 async function getProject(projectId) {
 	const params = {
-        "type": "Details",
-    }
-    let projectEndpoint = new URL(projectAPI + companyId + "/" + projectId)
+    "type": "Details",
+  }
+  let projectEndpoint = new URL(projectAPI + companyId + "/" + projectId)
 	projectEndpoint.search = new URLSearchParams(params).toString();
 	return await fetch(projectEndpoint, {
       method: "GET",
@@ -49,4 +49,30 @@ async function getProjectPhases(companyId, projectId) {
   })
   console.log(data)
   return data
+}
+
+async function updateProjectDetail(companyId, projectId, body) {
+  const params = {
+    "type": "Details",
+  }
+  let projectEndpoint = new URL(projectAPI + companyId + "/" + projectId)
+	projectEndpoint.search = new URLSearchParams(params).toString();
+
+  projectEndpoint.search = new URLSearchParams(params).toString();
+	return await fetch(projectEndpoint, {
+      method: "POST",
+      headers: {
+        'Content-Type': 'application/json',
+        'Token':localStorage.getItem('Token'),
+      },
+      body: body
+    })
+    .then(response => response.json())
+  	.then(data => {
+        return data["Items"][0]
+    })
+    .catch(e => { 
+    	console.log(e)
+        alert("Issue loading projects. Please contact support")
+    })
 }
