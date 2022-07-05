@@ -14,7 +14,7 @@ if(!projectId) window.location.replace("https://essura.webflow.io/projectlists")
 
 // Get Project Phases
 getProjectPhases(companyId, projectId).then(data => {phases=data})
-
+ 
 // Get Phase Information
 function getPhaseFieldValue(phase, field) {
 	return phases.find(obj => {
