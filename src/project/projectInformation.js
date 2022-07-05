@@ -16,6 +16,14 @@ function setProjectInformation() {
         currentFundingApproved = getPhaseFieldValue(currentPhase, "Investment").Complete.S
         targetCompletionDate = getPhaseFieldValue(currentPhase, "Time").EndDate.S
     }
+
+    console.log(currentFundingApproved)
+    console.log(phaseNameMap[currentPhase])
+    console.log(targetCompletionDate)
+    console.log(prevPhase)
+    console.log(currentPhase)
+
+
     $(".currentphase").text(phaseNameMap[currentPhase])
     $(".owner").text(projectDetail["Owner"]["S"])
     $(".lastupdate").text(formatDate(projectDetail["LastUpdate"]["N"]))
