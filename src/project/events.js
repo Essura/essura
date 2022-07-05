@@ -1,5 +1,5 @@
 setupButtons();
-getSettings(() => {
+getSettings((companyId) => {
   setProjectInformation();
   $('.datepicker').datepicker();
 

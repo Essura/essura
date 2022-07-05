@@ -1,6 +1,6 @@
 const settingsAPI = "https://v2b4e2vp17.execute-api.ap-southeast-2.amazonaws.com/prod/"
 
-async function getProjectSettings(){
+async function getProjectSettings(companyId){
 	return await fetch(settingsAPI + companyId + "/project", {
         method: "GET",
         headers: {
