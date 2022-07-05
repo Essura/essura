@@ -17,6 +17,12 @@ getSettings((companyId) => {
       $(".timeform").hide();
       $(".documentform").hide();
     }); 
+
+
+    $('.completePhase').click(() => {
+      updateProjectDetail(companyId, projectId, {"Status": currentPhase + 1})
+      location.reload();
+    })
     
     $('.benifitaddfield').click(function() {
       addRow('benefits', 'benefitfieldempty', 'benefitfieldtemplate', 'benefitslistcontainer');

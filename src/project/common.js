@@ -3,6 +3,7 @@ const projectId = urlParams.get('id');
 const companyId = localStorage.getItem('CompanyId');
 const projectDetail = await getProject(projectId)
 const projectSetting = await getProjectSettings()
+const currentPhase = parseInt(projectDetail["Phase"]["S"])
 let phases = []
 
 // Redirect if Project id not provided

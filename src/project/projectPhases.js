@@ -4,7 +4,10 @@ function setButtonActions(field) {
     element.addEventListener("click", () => {
       sessionStorage.setItem('field', field);
       sessionStorage.setItem('phase', phase);
-      console.log(phases)
+
+      // Disable button if not current phase
+      if (i !== currentPhase) element.prop('disabled', true);
+
       $("#Model").show()
       if(field === "investment") {
       	$(".investmentform").show()

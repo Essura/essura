@@ -9,7 +9,6 @@ async function setProjectInformation() {
         5: phaseNames["Five"]["S"],
     }
 
-    const currentPhase = parseInt(projectDetail["Phase"]["S"])
     const prevPhase = currentPhase - 1
     let currentFundingApproved = "0"
     let targetCompletionDate = "N/A"
