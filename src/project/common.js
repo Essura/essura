@@ -1,10 +1,12 @@
 const urlParams = new URLSearchParams(window.location.search);
 const projectId = urlParams.get('id');
 const companyId = localStorage.getItem('CompanyId');
-let projectDetail, projectSetting;
-getProject(projectId).then(data => {projectDetail=data})
+let projectDetail, projectSetting, currentPhase;
+getProject(projectId).then(data => {
+    projectDetail=data;
+    currentPhase=parseInt(projectDetail["Phase"]["S"]);
+})
 getProjectSettings().then(data => {projectSetting=data})
-const currentPhase = parseInt(projectDetail["Phase"]["S"])
 let phases = []
 
 // Redirect if Project id not provided
